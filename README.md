@@ -15,7 +15,7 @@ Use the command palet of VS Code :
  - You can configure a keyboard shortcut by clicking the wheel to the right of the command palet
 
 ## Building the extension
-Make sure you have `node` and `npm` installed.
+Make sure you have `node`, `npm` and `vsce` installed.
 
 Clone the repository :
 ```sh
