@@ -8,7 +8,8 @@ const gouvernailnsp = {
 	engine: config.get("engine"),
 	token: config.get("token"),
 	max_tokens: config.get("maxTokens"),
-	min_time: config.get("requestInterval") as number
+	min_time: config.get("requestInterval") as number,
+	auto_trigger: config.get("autoTriggerCompletion")
 }
 
 let content = "";
@@ -24,7 +25,7 @@ if (gouvernailnsp.token === "") {
 		}
 	)
 } else {
-	setInterval(function () {
+	var gouvernail_req = function () {
 		if (content !== corr[0] && canReq) {
 			console.log("sending request");
 			let xhr = new XMLHttpRequest();
@@ -59,7 +60,10 @@ if (gouvernailnsp.token === "") {
 		}
 
 		vscode.commands.executeCommand("editor.action.inlineSuggest.trigger");
-	}, gouvernailnsp.min_time);
+	};
+	if (gouvernailnsp.auto_trigger){
+		setInterval(gouvernail_req, gouvernailnsp.min_time);
+	}
 }
 
 export function activate(context: vscode.ExtensionContext) {
@@ -75,7 +79,11 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const provider: vscode.InlineCompletionItemProvider = {
 		provideInlineCompletionItems: (document, position, context, token) => {
+			if (!gouvernailnsp.auto_trigger){
+				gouvernail_req();
+			}
 			console.log('provideInlineCompletionItems triggered');
+			console.log(context);
 			content = document.getText(new vscode.Range(document.positionAt(0), position));
 			let insertText = "";
 			if (content === corr[0]) {

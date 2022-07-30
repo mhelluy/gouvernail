@@ -6,7 +6,7 @@
 	"publisher": "mhelluy",
 	"displayName": "Gouvernail",
 	"description": "Autocomplete code using Fabrice Bellard's AI API. (see https://textsynth.com)",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"repository": "https://github.com/mhelluy/gouvernail",
 	"engines": {
 		"vscode": "^1.67.0"
@@ -43,6 +43,11 @@
 					"type": "integer",
 					"default": 2000,
 					"description": "Minimum time, in ms, between each request to the API. There is no request while the content of the file is not modified."
+				},
+				"gouvernail.autoTriggerCompletion": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "If true, the editor will periodically ask the API to get suggestions. If false, the editor will ask the API only when Inline Suggestions are triggered."
 				}
 			}
 		},
