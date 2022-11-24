@@ -6,7 +6,7 @@
 	"publisher": "mhelluy",
 	"displayName": "Gouvernail",
 	"description": "Autocomplete code using Fabrice Bellard's AI API. (see https://textsynth.com)",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"repository": "https://github.com/mhelluy/gouvernail",
 	"engines": {
 		"vscode": "^1.67.0"
@@ -24,9 +24,9 @@
 			"properties": {
 				"gouvernail.engine": {
 					"type": "string",
-					"default": "gptj_6B",
-					"enum": ["gptj_6B","boris_6B","fairseq_gpt_13B","gptneox_20B"],
-					"enumDescriptions": ["GPT-J is a language model with 6 billion parameters trained on the Pile (825 GB of text data) published by EleutherAI. Its main language is English but it is also fluent in several other languages. It is also trained on several computer languages.","Boris is a fine tuned version of GPT-J for the French language. Use this model is you want the best performance with the French language.","Fairseq GPT 13B is an English language model with 13 billion parameters. Its training corpus is less diverse than GPT-J but it has better performance at least on pure English language tasks.","GPT-NeoX-20B is the largest publically available English language model with 20 billion parameters. It was trained on the same corpus as GPT-J."],
+					"default": "codegen_6B_mono",
+					"enum": ["gptj_6B","boris_6B","fairseq_gpt_13B","gptneox_20B","codegen_6B_mono"],
+					"enumDescriptions": ["GPT-J is a language model with 6 billion parameters trained on the Pile (825 GB of text data) published by EleutherAI. Its main language is English but it is also fluent in several other languages. It is also trained on several computer languages.","Boris is a fine tuned version of GPT-J for the French language. Use this model is you want the best performance with the French language.","Fairseq GPT 13B is an English language model with 13 billion parameters. Its training corpus is less diverse than GPT-J but it has better performance at least on pure English language tasks.","GPT-NeoX-20B is the largest publically available English language model with 20 billion parameters. It was trained on the same corpus as GPT-J.","CodeGen-6B-mono is a 6 billion parameter model specialized to generate source code. It was mostly trained on Python code."],
 					"description": "Textsynth AI Engine to use."
 				},
 				"gouvernail.token": {
